@@ -1,0 +1,3 @@
+vagrant@precise32:~$ sudo apt-get -y update
+vagrant@precise32:~$ sudo apt-get -y install nginx
+vagrant@precise32:~$ sudo service nginx start
