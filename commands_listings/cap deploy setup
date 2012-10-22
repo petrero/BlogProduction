@@ -1,0 +1,30 @@
+~/rails/BlogProduction$ cap deploy:setup
+  * executing `deploy:setup'
+  * executing "mkdir -p /home/deployer/apps/BlogProduction /home/deployer/apps/BlogProduction/releases /home/deployer/apps/BlogProduction/shared /home/deployer/apps/BlogProduction/shared/system /home/deployer/apps/BlogProduction/shared/log /home/deployer/apps/BlogProduction/shared/pids"
+    servers: ["192.168.33.10"]
+    [192.168.33.10] executing command
+    command finished in 542ms
+  * executing "chmod g+w /home/deployer/apps/BlogProduction /home/deployer/apps/BlogProduction/releases /home/deployer/apps/BlogProduction/shared /home/deployer/apps/BlogProduction/shared/system /home/deployer/apps/BlogProduction/shared/log /home/deployer/apps/BlogProduction/shared/pids"
+    servers: ["192.168.33.10"]
+    [192.168.33.10] executing command
+    command finished in 463ms
+    triggering after callbacks for `deploy:setup'
+  * executing `deploy:setup_config'
+  * executing "sudo -p 'sudo password: ' ln -nfs /home/deployer/apps/BlogProduction/current/config/nginx.conf /etc/nginx/sites-enabled/BlogProduction"
+    servers: ["192.168.33.10"]
+    [192.168.33.10] executing command
+    command finished in 473ms
+  * executing "sudo -p 'sudo password: ' ln -nfs /home/deployer/apps/BlogProduction/current/config/unicorn_init.sh /etc/init.d/unicorn_BlogProduction"
+    servers: ["192.168.33.10"]
+    [192.168.33.10] executing command
+    command finished in 481ms
+  * executing "mkdir -p /home/deployer/apps/BlogProduction/shared/config"
+    servers: ["192.168.33.10"]
+    [192.168.33.10] executing command
+    command finished in 460ms
+    servers: ["192.168.33.10"]
+ ** sftp upload #<StringIO:0xa16a9b8> -> /home/deployer/apps/BlogProduction/shared/config/database.yml
+    [192.168.33.10] /home/deployer/apps/BlogProduction/shared/config/database.yml
+    [192.168.33.10] done
+  * sftp upload complete
+Now edit the config files in /home/deployer/apps/BlogProduction/shared.
