@@ -1,0 +1,13 @@
+deployer@precise32:~$ sudo rm /etc/nginx/sites-enabled/default
+deployer@precise32:~$ sudo service nginx restart
+Restarting nginx: nginx.
+deployer@precise32:~$ sudo update-rc.d unicorn_BlogProduction defaults
+ Adding system startup for /etc/init.d/unicorn_BlogProduction ...
+   /etc/rc0.d/K20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc1.d/K20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc6.d/K20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc2.d/S20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc3.d/S20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc4.d/S20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+   /etc/rc5.d/S20unicorn_BlogProduction -> ../init.d/unicorn_BlogProduction
+
