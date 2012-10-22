@@ -1,0 +1,113 @@
+~/rails/BlogProduction$ cap deploy:cold
+	  * executing `deploy:cold'
+		* executing `deploy:update'
+	 ** transaction: start
+		* executing `deploy:update_code'
+		  updating the cached checkout on all servers
+		  executing locally: "git ls-remote git@github.com:petrero/BlogProduction.git testing"
+		  command finished in 3473ms
+		* executing "if [ -d /home/deployer/apps/BlogProduction/shared/cached-copy ]; then cd /home/deployer/apps/BlogProduction/shared/cached-copy && git fetch -q origin && git fetch --tags -q origin && git reset -q --hard ba1ff0acff297b07db20020cf13e647522243902 && git clean -q -d -x -f; else git clone -q git@github.com:petrero/BlogProduction.git /home/deployer/apps/BlogProduction/shared/cached-copy && cd /home/deployer/apps/BlogProduction/shared/cached-copy && git checkout -q -b deploy ba1ff0acff297b07db20020cf13e647522243902; fi"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 4226ms
+		  copying the cached version to /home/deployer/apps/BlogProduction/releases/20121022143113
+		* executing "cp -RPp /home/deployer/apps/BlogProduction/shared/cached-copy /home/deployer/apps/BlogProduction/releases/20121022143113 && (echo ba1ff0acff297b07db20020cf13e647522243902 > /home/deployer/apps/BlogProduction/releases/20121022143113/REVISION)"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 466ms
+		* executing `deploy:finalize_update'
+		  triggering before callbacks for `deploy:finalize_update'
+		* executing `deploy:assets:symlink'
+		* executing "rm -rf /home/deployer/apps/BlogProduction/releases/20121022143113/public/assets &&\\\n        mkdir -p /home/deployer/apps/BlogProduction/releases/20121022143113/public &&\\\n        mkdir -p /home/deployer/apps/BlogProduction/shared/assets &&\\\n        ln -s /home/deployer/apps/BlogProduction/shared/assets /home/deployer/apps/BlogProduction/releases/20121022143113/public/assets"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 493ms
+		* executing `bundle:install'
+		* executing "cd /home/deployer/apps/BlogProduction/releases/20121022143113 && bundle install --gemfile /home/deployer/apps/BlogProduction/releases/20121022143113/Gemfile --path /home/deployer/apps/BlogProduction/shared/bundle --deployment --quiet --without development test"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 114863ms
+		* executing "chmod -R g+w /home/deployer/apps/BlogProduction/releases/20121022143113"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 480ms
+		* executing "rm -rf /home/deployer/apps/BlogProduction/releases/20121022143113/public/system && mkdir -p /home/deployer/apps/BlogProduction/releases/20121022143113/public/"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 468ms
+		* executing "ln -s /home/deployer/apps/BlogProduction/shared/system /home/deployer/apps/BlogProduction/releases/20121022143113/public/system"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 470ms
+		* executing "rm -rf /home/deployer/apps/BlogProduction/releases/20121022143113/log"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 468ms
+		* executing "ln -s /home/deployer/apps/BlogProduction/shared/log /home/deployer/apps/BlogProduction/releases/20121022143113/log"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 471ms
+		* executing "rm -rf /home/deployer/apps/BlogProduction/releases/20121022143113/tmp/pids && mkdir -p /home/deployer/apps/BlogProduction/releases/20121022143113/tmp/"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 466ms
+		* executing "ln -s /home/deployer/apps/BlogProduction/shared/pids /home/deployer/apps/BlogProduction/releases/20121022143113/tmp/pids"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 470ms
+		  triggering after callbacks for `deploy:finalize_update'
+		* executing `deploy:symlink_config'
+		* executing "ln -nfs /home/deployer/apps/BlogProduction/shared/config/database.yml /home/deployer/apps/BlogProduction/releases/20121022143113/config/database.yml"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 464ms
+		  triggering after callbacks for `deploy:update_code'
+		* executing `deploy:assets:precompile'
+		* executing "cd /home/deployer/apps/BlogProduction/releases/20121022143113 && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 15965ms
+		* executing `deploy:create_symlink'
+		* executing "rm -f /home/deployer/apps/BlogProduction/current && ln -s /home/deployer/apps/BlogProduction/releases/20121022143113 /home/deployer/apps/BlogProduction/current"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 465ms
+	 ** transaction: commit
+		* executing `deploy:migrate'
+		* executing "cd /home/deployer/apps/BlogProduction/releases/20121022143113 && bundle exec rake RAILS_ENV=production  db:migrate"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+	 ** [out :: 192.168.33.10] ==  CreateArticles: migrating =================================================
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] -- create_table(:articles)
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] NOTICE:  CREATE TABLE will create implicit sequence "articles_id_seq" for serial column "articles.id"
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "articles_pkey" for table "articles"
+	 ** [out :: 192.168.33.10] -> 0.0128s
+	 ** [out :: 192.168.33.10] ==  CreateArticles: migrated (0.0133s) ========================================
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] ==  DeviseCreateUsers: migrating ==============================================
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] -- create_table(:users)
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] NOTICE:  CREATE TABLE will create implicit sequence "users_id_seq" for serial column "users.id"
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "users_pkey" for table "users"
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] -> 0.0131s
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] -- add_index(:users, :email, {:unique=>true})
+	 ** [out :: 192.168.33.10] 
+	 ** [out :: 192.168.33.10] -> 0.0042s
+	 ** [out :: 192.168.33.10] -- add_index(:users, :reset_password_token, {:unique=>true})
+	 ** [out :: 192.168.33.10] -> 0.0052s
+	 ** [out :: 192.168.33.10] ==  DeviseCreateUsers: migrated (0.0241s) =====================================
+	 ** [out :: 192.168.33.10] 
+		  command finished in 4076ms
+		* executing `deploy:start'
+		* executing "/etc/init.d/unicorn_BlogProduction start"
+		  servers: ["192.168.33.10"]
+		  [192.168.33.10] executing command
+		  command finished in 1622ms
+	
