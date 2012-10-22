@@ -1,0 +1,20 @@
+vagrant@precise32:~$ sudo adduser deployer --ingroup admin
+	Creating home directory `/home/deployer' ...
+	Copying files from `/etc/skel' ...
+	Enter new UNIX password: 
+	Retype new UNIX password: 
+	passwd: password updated successfully
+	Changing the user information for deployer
+	Enter the new value, or press ENTER for the default
+		Full Name []: 
+		Room Number []: 
+		Work Phone []: 
+		Home Phone []: 
+		Other []: 
+	Is the information correct? [Y/n] y
+vagrant@precise32:~$ su deployer
+	Password: 
+	To run a command as administrator (user "root"), use "sudo <command>".
+	See "man sudo_root" for details.
+deployer@precise32:/home/vagrant$ cd 
+deployer@precise32:~$ 
