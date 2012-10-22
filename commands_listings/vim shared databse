@@ -1,0 +1,23 @@
+deployer@precise32:~$ vim apps/BlogProduction/shared/config/database.yml
+	# PostgreSQL. Versions 8.2 and up are supported.
+	#
+	# Install the pg driver:
+	#   gem install pg
+	# On Mac OS X with macports:
+	#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+	# On Windows:
+	#   gem install pg
+	#       Choose the win32 build.
+	#       Install PostgreSQL and put its /bin directory on your path.
+	#
+	# Configure Using Gemfile
+	# gem 'pg'
+	#
+	production:
+		adapter: postgresql
+		encoding: unicode
+		database: blogproduction_production
+		pool: 5
+		host: localhost
+		username: blog
+		password: secret
