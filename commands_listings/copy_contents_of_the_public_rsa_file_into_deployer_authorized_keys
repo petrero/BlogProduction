@@ -1,0 +1,2 @@
+#Host
+:~$ cat ~/.ssh/id_rsa.pub | ssh deployer@192.168.33.10 'cat >> ~/.ssh/authorized_keys'
