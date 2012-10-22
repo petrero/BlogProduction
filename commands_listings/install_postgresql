@@ -1,0 +1,17 @@
+vagrant@precise32:~$ sudo apt-get -y install python-software-properties
+vagrant@precise32:~$ sudo add-apt-repository ppa:pitti/postgresql
+vagrant@precise32:~$ sudo apt-get -y update
+vagrant@precise32:~$ sudo apt-get -y install postgresql libpq-dev
+vagrant@precise32:~$ sudo -u postgres psql
+	psql (9.1.6)
+	Type "help" for help.
+
+	postgres=#\password
+	Enter new password: 
+	Enter it again: 
+	postgres=# create user blog with password 'secret';
+	CREATE ROLE
+	postgres=# create database blogproduction_production owner blog;
+	CREATE DATABASE	
+	postgres=# \q
+vagrant@precise32:~$
