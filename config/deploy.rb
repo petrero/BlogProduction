@@ -1,6 +1,6 @@
-set :recipient, "Ruby"
+#set :recipient, "Ruby"
 task :hello do
-	puts "Hello #{recipient}!"
+	puts "Hello #{fetch(:recipient, "World!")}"
 	#goodbye
 end
 task :goodbye do
