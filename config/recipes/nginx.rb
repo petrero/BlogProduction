@@ -1,12 +1,12 @@
 namespace :nginx do
-	task :install do
+	task :install, roles: :web do
 		run "#{sudo} add-apt-repository ppa:nginx/stable"
 		run "#{sudo} apt-get -y update"
 		run "#{sudo} apt-get -y install nginx"
 	end
 	after "deploy:install", "nginx:install"
 
-	task :setup do
+	task :setup, roles: :web do
 		# put result, "etc/nginx/sites-enabled/#{application}" (require special privileges)
 		template "nginx_unicorn.erb", "/tmp/nginx.conf"
 		run "#{sudo} mv /tmp/nginx.conf etc/nginx/sites-enabled/#{application}"	
@@ -16,7 +16,7 @@ namespace :nginx do
 	after "deploy:setup", "nginx:setup"
 
 	%w[start stop restart].each do |command|
-		task command do
+		task command, roles: :web do
 			run "#{sudo} service nginx #{command}"	
 		end
 	end
