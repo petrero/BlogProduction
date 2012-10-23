@@ -3,6 +3,11 @@ def template(from, to)
 	put ERB.new(erb).result(binding), to #put method is provided by capistrano
 end
 
+def set_default(name, *args, &block)
+  set(name, *args, &block) unless exists?(name)
+end
+
+
 namespace :deploy do
 	task :install do
 		run "#{sudo} apt-get -y update"
