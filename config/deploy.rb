@@ -1,8 +1,9 @@
+set :recipient, "Ruby"
 task :hello do
-	puts "Hello ruby!"
+	puts "Hello #{recipient}!"
 	#goodbye
 end
 task :goodbye do
-	puts "Goodbye ruby!"
+	puts "Goodbye #{recipient}!"
 end
 after :hello, :goodbye
