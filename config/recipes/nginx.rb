@@ -1,4 +1,5 @@
 namespace :nginx do
+	desc "install latest stable release of nginx"
 	task :install, roles: :web do
 		run "#{sudo} add-apt-repository ppa:nginx/stable"
 		run "#{sudo} apt-get -y update"
@@ -6,6 +7,7 @@ namespace :nginx do
 	end
 	after "deploy:install", "nginx:install"
 
+	desc "Setup nginx configuration for this application"
 	task :setup, roles: :web do
 		# put result, "etc/nginx/sites-enabled/#{application}" (require special privileges)
 		template "nginx_unicorn.erb", "/tmp/nginx.conf"
