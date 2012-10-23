@@ -3,6 +3,7 @@ require "bundler/capistrano"
 load "config/recipes/base"
 load "config/recipes/nginx"
 load "config/recipes/unicorn"
+load "config/recipes/postgresql"
 
 server "192.168.33.10", :web, :app, :db, primary: true
 
