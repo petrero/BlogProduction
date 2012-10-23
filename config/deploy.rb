@@ -1,3 +1,7 @@
+# role :web, "192.168.33.10"
+# role :app, "192.168.33.10"
+# role :db, "192.168.33.10", primary: true
+
 server "192.168.33.10", :web, :app, :db, primary: true #this is the one that it's going to run migrations on
 set :user, "deployer"
 
