@@ -4,6 +4,7 @@ load "config/recipes/base"
 load "config/recipes/nginx"
 load "config/recipes/unicorn"
 load "config/recipes/postgresql"
+load "config/recipes/nodejs"
 
 server "192.168.33.10", :web, :app, :db, primary: true
 
